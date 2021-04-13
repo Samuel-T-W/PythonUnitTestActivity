@@ -1,6 +1,9 @@
 import unittest
-
-from classes.validator import Validator
+# import os, sys
+# currentdir = os.path.dirname(os.path.realpath(__file__))
+# parentdir = os.path.dirname(currentdir)
+# sys.path.append(parentdir)
+from  classes.validator import Validator 
 
 
 class TestValidator(unittest.TestCase):
@@ -31,6 +34,16 @@ class TestValidator(unittest.TestCase):
     def test_it_will_reject_username_if_there_is_no_uppercase_characters(self):
         # Assume
         username = 'reval'
+
+        # Action
+        result = self.validator.username_is_valid(username)
+
+        # Assert
+        self.assertFalse(result)
+    
+    def test_it_will_reject_username_if_there_are_any_special_characters(self):
+        # Assume
+        username = 'revl'
 
         # Action
         result = self.validator.username_is_valid(username)
